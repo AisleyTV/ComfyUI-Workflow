@@ -1,0 +1,973 @@
+{
+  "id": "66ec9ce4-37c6-4ed8-af45-b3c38e1d0e19",
+  "revision": 0,
+  "last_node_id": 496,
+  "last_link_id": 789,
+  "nodes": [
+    {
+      "id": 461,
+      "type": "SaveImageAdvanced",
+      "pos": [
+        690,
+        3580
+      ],
+      "size": [
+        710,
+        760
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 732
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            788
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0"
+      },
+      "widgets_values": [
+        "Qwen_image/ComfyUI",
+        "png",
+        "8-bit",
+        "sRGB"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "Qwen_image/ComfyUI",
+        "format": "png",
+        "format.bit_depth": "8-bit",
+        "format.input_color_space": "sRGB"
+      }
+    },
+    {
+      "id": 470,
+      "type": "LoadImage",
+      "pos": [
+        -2020,
+        4000
+      ],
+      "size": [
+        1200,
+        750
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            779
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_00004.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "ComfyUI_00004.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 477,
+      "type": "UNETLoader",
+      "pos": [
+        -790,
+        3580
+      ],
+      "size": [
+        510,
+        90
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            783
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "qwen_image_2.1_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_image_2.1_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 478,
+      "type": "CLIPLoader",
+      "pos": [
+        -790,
+        3840
+      ],
+      "size": [
+        510,
+        120
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            770
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "qwen3vl_8b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3vl_8b_int8_convrot.safetensors",
+        "qwen_image",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+        "type": "qwen_image",
+        "device": "default"
+      }
+    },
+    {
+      "id": 479,
+      "type": "VAELoader",
+      "pos": [
+        -790,
+        4000
+      ],
+      "size": [
+        510,
+        70
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            731,
+            772
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "qwen_image_2.1_vae_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_image_2.1_vae_bf16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+      }
+    },
+    {
+      "id": 480,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -590,
+        4200
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 781
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 782
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            785
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 481,
+      "type": "VAEDecode",
+      "pos": [
+        370,
+        4170
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 733
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 731
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            732
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 482,
+      "type": "KSampler",
+      "pos": [
+        350,
+        3830
+      ],
+      "size": [
+        270,
+        270
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 737
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 774
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 775
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 785
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            733
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        1071228544806581,
+        "randomize",
+        25,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1071228544806581,
+        "control_after_generate": "randomize",
+        "steps": 25,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 484,
+      "type": "QwenImage21Cache",
+      "pos": [
+        350,
+        3650
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 784
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            737
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "QwenImage21Cache"
+      },
+      "widgets_values": [
+        "auto",
+        "default"
+      ],
+      "widgets_values_named": {
+        "device": "auto",
+        "dtype": "default"
+      }
+    },
+    {
+      "id": 489,
+      "type": "TextEncodeQwenImage21",
+      "pos": [
+        -210,
+        3600
+      ],
+      "size": [
+        460,
+        520
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 770
+        },
+        {
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 778
+        },
+        {
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 779
+        },
+        {
+          "name": "images.image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 772
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            774
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            775
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "TextEncodeQwenImage21"
+      },
+      "widgets_values": [
+        "Character from image_2, pose from image_1,",
+        "",
+        1024
+      ],
+      "widgets_values_named": {
+        "prompt": "Character from image_2, pose from image_1,",
+        "negative_prompt": "",
+        "resolution": 1024
+      }
+    },
+    {
+      "id": 492,
+      "type": "VNCCS_PoseStudio",
+      "pos": [
+        -2020,
+        3010
+      ],
+      "size": [
+        1200,
+        940
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "pose_image",
+          "name": "pose_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "pose_data",
+          "name": "pose_data",
+          "type": "STRING",
+          "widget": {
+            "name": "pose_data"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            778,
+            780,
+            789
+          ]
+        },
+        {
+          "label": "lighting_prompt",
+          "name": "lighting_prompt",
+          "shape": 6,
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "vnccs-utils-maintained",
+        "ver": "0.6.0",
+        "Node name for S&R": "VNCCS_PoseStudio",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "{\"mesh\":{\"age\":25,\"gender\":0,\"weight\":0.5,\"muscle\":0.5,\"height\":0.98,\"proportions\":0.5,\"african\":0.3333333333333333,\"asian\":0.3333333333333333,\"caucasian\":0.3333333333333333,\"breast_size\":0.5,\"firmness\":0.5,\"penis_len\":0.5,\"penis_circ\":0.5,\"penis_test\":0.5,\"head_size\":1.2,\"arm_size\":1,\"hand_size\":1,\"foot_size\":1,\"upper_arm_l_length\":0.5,\"upper_arm_r_length\":0.5,\"forearm_l_length\":0.5,\"forearm_r_length\":0.5,\"thigh_l_length\":0.5,\"thigh_r_length\":0.5,\"shin_l_length\":0.5,\"shin_r_length\":0.5,\"spine_length\":0.5,\"show_genitals\":false,\"shoulder_l_length\":0.5,\"shoulder_r_length\":0.5,\"hip_l_length\":0.5,\"hip_r_length\":0.5},\"export\":{\"view_width\":1024,\"view_height\":1520,\"cam_zoom\":3.218127062617358,\"cam_offset_x\":-0.11600115844901869,\"cam_offset_y\":-6.113628155700501,\"cam_yaw_deg\":0,\"cam_pitch_deg\":0,\"output_mode\":\"LIST\",\"grid_columns\":2,\"bg_color\":[255,255,255],\"debugMode\":false,\"debugPortraitMode\":false,\"debugKeepLighting\":false,\"debugShowSAMHelper\":false,\"debugShowSAMMeshOverlay\":false,\"samApplyCamera\":false,\"keepOriginalLighting\":true,\"user_prompt\":\"\",\"prompt_template\":\"Draw character from image2\\n<lighting>\\n<user_prompt>\",\"skin_type\":\"naked\",\"interface_mode\":\"studio\",\"hand_controls_v2\":true,\"manager_auto_analyze_proportions\":true,\"capture_image_size\":false,\"editor_mode\":\"image\",\"animation_image_batch\":false,\"directional_skydome_enabled\":false},\"poses\":[{\"bones\":{\"Root\":[-5.460598373241077,9.528663078661797,0],\"pelvis\":[5.466290985459896,-10.315838469639502,-0.8980013407306265],\"spine_01\":[-12.503339934815395,2.1055413948957216,-1.4632275075173609],\"spine_02\":[5.890062714552047,2.7392542059574136,0.3201492267555981],\"spine_03\":[9.654731988306168,-1.6602246236579352,0.1787178841053621],\"thigh_l\":[-35.76098755486909,3.1142647463444617,-8.590704169909221],\"thigh_r\":[-35.530538533980526,-3.646521988886261,8.948802123773039],\"calf_l\":[73.66395755693726,7.715807619684684,4.630452163064044],\"calf_r\":[73.89766900355455,-7.198227814937422,-5.071565436016745],\"clavicle_l\":[-1.8748497589771778,-15.589048230196928,14.799640738688282],\"clavicle_r\":[2.6248910852136027,-1.9818585556809385,-19.68301528645396],\"foot_l\":[-84.71329017402982,-1.3263507148611382,14.359228634524221],\"foot_r\":[-83.34232696077736,-0.3253655619249704,-11.996626741879062],\"neck_01\":[23.98520824361154,1.8138064634185853,1.9335367382243984],\"upperarm_l\":[6.456962307115482,19.21432207603154,-37.11471537324813],\"upperarm_r\":[-42.86835815286319,-3.220254154342582,24.6276333466595],\"head\":[-32.67034185628765,-5.672494529903148,-11.562393109451513],\"lowerarm_l\":[21.2695110611042,-12.71041919992483,-22.04384005827169],\"lowerarm_r\":[-88.8059813344126,5.9352691452319535,69.14322210712321],\"hand_l\":[21.7438424861107,1.7117983735524211,35.242700178272614],\"hand_r\":[51.231671506918495,22.46464851171815,-79.7845531830561],\"index_01_l\":[13.377500220719458,8.876913640393694,7.801862880075827],\"index_01_r\":[5.9713919909568265,-6.907417268298702,-14.705037411384756],\"index_02_l\":[6.968163962257407,-4.368261534908787,-11.067772234278276],\"index_02_r\":[-7.039065718494457,3.4898363909844727,-16.847642967978697],\"index_03_l\":[0.6654742371096075,1.7609410952222082,-0.2197737023741211],\"index_03_r\":[-3.094786130583156,10.442190499902262,-2.164427786477979],\"middle_01_l\":[8.58593040992678,-0.4075637631099387,-24.828998202532823],\"middle_01_r\":[-4.316137114419037,2.983147379734279,-16.108151948031075],\"middle_02_l\":[24.044372116557916,-0.43119971736071766,-26.28507392380206],\"middle_02_r\":[3.5505134767816715,6.255776536934747,-14.961156160279273],\"middle_03_l\":[0.9788324125628953,5.146552328127214,-1.0866288903113073],\"middle_03_r\":[-0.9344524015997092,11.725170466004922,-2.837799027703428],\"pinky_01_l\":[5.64348983971766,9.092883434515288,-20.93691789496147],\"pinky_01_r\":[-12.362631675021662,3.9842978987783355,-9.984454374983923],\"pinky_02_l\":[12.077790946009431,3.3136627167545214,-14.048884680785127],\"pinky_02_r\":[9.081372441101196,9.88571167216953,-17.608461537834003],\"pinky_03_l\":[-0.4834557481741107,2.7427749901292504,-0.6857865400312322],\"pinky_03_r\":[4.214766701989701,14.673626564475827,-3.2336992268116145],\"ring_01_l\":[-3.1112485091735556,-2.9570195005144644,-19.17271974425262],\"ring_01_r\":[-11.849550168426433,8.595976409252621,-10.42466243277548],\"ring_02_l\":[11.952650357307594,-2.262964190364706,-18.275894623198045],\"ring_02_r\":[8.052710415204643,10.39291089745456,-23.867811278265386],\"ring_03_l\":[0.5977216181459049,4.705650236297158,-1.1773601401397507],\"ring_03_r\":[0.004416469497848602,12.982980095672309,-3.509220037236525],\"thumb_01_l\":[-1.307369646520056,10.708961402054054,0.3086419499028043],\"thumb_01_r\":[-3.4806828466835342,-11.92468170900816,-1.463344081378347],\"thumb_02_l\":[6.6463709183609625,0.9847668245460709,-5.341311076200379],\"thumb_02_r\":[0.15588813003108717,-5.330898975585665,-2.1027689161747585],\"thumb_03_l\":[-6.716433105386073,-1.274906394734334,-3.5171405032994474],\"thumb_03_r\":[-0.3590607088842275,0.07129217989264565,0.05193961120113886]},\"modelRotation\":[-2,-0.23882636187993414,0],\"camera\":{\"posX\":0.11600115844901868,\"posY\":6.495580441467104,\"posZ\":46.28018310666084,\"targetX\":0.11600115844901868,\"targetY\":6.4955804414671015,\"targetZ\":1.280183106660843},\"cameraParams\":{\"offset_x\":-0.11600115844901869,\"offset_y\":-6.113628155700501,\"zoom\":3.218127062617358,\"yaw_deg\":0,\"pitch_deg\":0},\"prompt\":\"\"}],\"lights\":[{\"type\":\"directional\",\"color\":\"#ffffff\",\"intensity\":2,\"x\":-0.6390347177508815,\"y\":20,\"z\":-7.062589272072728},{\"type\":\"ambient\",\"color\":\"#505050\",\"intensity\":1,\"x\":0,\"y\":0,\"z\":0}],\"activeTab\":0,\"capture_id\":\"vnccs_capture_492\",\"capture_version\":412,\"lighting_prompts\":[\"Draw character from image2\"],\"background_url\":null}",
+        ""
+      ],
+      "widgets_values_named": {
+        "pose_data": "{\"mesh\":{\"age\":25,\"gender\":0,\"weight\":0.5,\"muscle\":0.5,\"height\":0.98,\"proportions\":0.5,\"african\":0.3333333333333333,\"asian\":0.3333333333333333,\"caucasian\":0.3333333333333333,\"breast_size\":0.5,\"firmness\":0.5,\"penis_len\":0.5,\"penis_circ\":0.5,\"penis_test\":0.5,\"head_size\":1.2,\"arm_size\":1,\"hand_size\":1,\"foot_size\":1,\"upper_arm_l_length\":0.5,\"upper_arm_r_length\":0.5,\"forearm_l_length\":0.5,\"forearm_r_length\":0.5,\"thigh_l_length\":0.5,\"thigh_r_length\":0.5,\"shin_l_length\":0.5,\"shin_r_length\":0.5,\"spine_length\":0.5,\"show_genitals\":false,\"shoulder_l_length\":0.5,\"shoulder_r_length\":0.5,\"hip_l_length\":0.5,\"hip_r_length\":0.5},\"export\":{\"view_width\":1024,\"view_height\":1520,\"cam_zoom\":3.218127062617358,\"cam_offset_x\":-0.11600115844901869,\"cam_offset_y\":-6.113628155700501,\"cam_yaw_deg\":0,\"cam_pitch_deg\":0,\"output_mode\":\"LIST\",\"grid_columns\":2,\"bg_color\":[255,255,255],\"debugMode\":false,\"debugPortraitMode\":false,\"debugKeepLighting\":false,\"debugShowSAMHelper\":false,\"debugShowSAMMeshOverlay\":false,\"samApplyCamera\":false,\"keepOriginalLighting\":true,\"user_prompt\":\"\",\"prompt_template\":\"Draw character from image2\\n<lighting>\\n<user_prompt>\",\"skin_type\":\"naked\",\"interface_mode\":\"studio\",\"hand_controls_v2\":true,\"manager_auto_analyze_proportions\":true,\"capture_image_size\":false,\"editor_mode\":\"image\",\"animation_image_batch\":false,\"directional_skydome_enabled\":false},\"poses\":[{\"bones\":{\"Root\":[-5.460598373241077,9.528663078661797,0],\"pelvis\":[5.466290985459896,-10.315838469639502,-0.8980013407306265],\"spine_01\":[-12.503339934815395,2.1055413948957216,-1.4632275075173609],\"spine_02\":[5.890062714552047,2.7392542059574136,0.3201492267555981],\"spine_03\":[9.654731988306168,-1.6602246236579352,0.1787178841053621],\"thigh_l\":[-35.76098755486909,3.1142647463444617,-8.590704169909221],\"thigh_r\":[-35.530538533980526,-3.646521988886261,8.948802123773039],\"calf_l\":[73.66395755693726,7.715807619684684,4.630452163064044],\"calf_r\":[73.89766900355455,-7.198227814937422,-5.071565436016745],\"clavicle_l\":[-1.8748497589771778,-15.589048230196928,14.799640738688282],\"clavicle_r\":[2.6248910852136027,-1.9818585556809385,-19.68301528645396],\"foot_l\":[-84.71329017402982,-1.3263507148611382,14.359228634524221],\"foot_r\":[-83.34232696077736,-0.3253655619249704,-11.996626741879062],\"neck_01\":[23.98520824361154,1.8138064634185853,1.9335367382243984],\"upperarm_l\":[6.456962307115482,19.21432207603154,-37.11471537324813],\"upperarm_r\":[-42.86835815286319,-3.220254154342582,24.6276333466595],\"head\":[-32.67034185628765,-5.672494529903148,-11.562393109451513],\"lowerarm_l\":[21.2695110611042,-12.71041919992483,-22.04384005827169],\"lowerarm_r\":[-88.8059813344126,5.9352691452319535,69.14322210712321],\"hand_l\":[21.7438424861107,1.7117983735524211,35.242700178272614],\"hand_r\":[51.231671506918495,22.46464851171815,-79.7845531830561],\"index_01_l\":[13.377500220719458,8.876913640393694,7.801862880075827],\"index_01_r\":[5.9713919909568265,-6.907417268298702,-14.705037411384756],\"index_02_l\":[6.968163962257407,-4.368261534908787,-11.067772234278276],\"index_02_r\":[-7.039065718494457,3.4898363909844727,-16.847642967978697],\"index_03_l\":[0.6654742371096075,1.7609410952222082,-0.2197737023741211],\"index_03_r\":[-3.094786130583156,10.442190499902262,-2.164427786477979],\"middle_01_l\":[8.58593040992678,-0.4075637631099387,-24.828998202532823],\"middle_01_r\":[-4.316137114419037,2.983147379734279,-16.108151948031075],\"middle_02_l\":[24.044372116557916,-0.43119971736071766,-26.28507392380206],\"middle_02_r\":[3.5505134767816715,6.255776536934747,-14.961156160279273],\"middle_03_l\":[0.9788324125628953,5.146552328127214,-1.0866288903113073],\"middle_03_r\":[-0.9344524015997092,11.725170466004922,-2.837799027703428],\"pinky_01_l\":[5.64348983971766,9.092883434515288,-20.93691789496147],\"pinky_01_r\":[-12.362631675021662,3.9842978987783355,-9.984454374983923],\"pinky_02_l\":[12.077790946009431,3.3136627167545214,-14.048884680785127],\"pinky_02_r\":[9.081372441101196,9.88571167216953,-17.608461537834003],\"pinky_03_l\":[-0.4834557481741107,2.7427749901292504,-0.6857865400312322],\"pinky_03_r\":[4.214766701989701,14.673626564475827,-3.2336992268116145],\"ring_01_l\":[-3.1112485091735556,-2.9570195005144644,-19.17271974425262],\"ring_01_r\":[-11.849550168426433,8.595976409252621,-10.42466243277548],\"ring_02_l\":[11.952650357307594,-2.262964190364706,-18.275894623198045],\"ring_02_r\":[8.052710415204643,10.39291089745456,-23.867811278265386],\"ring_03_l\":[0.5977216181459049,4.705650236297158,-1.1773601401397507],\"ring_03_r\":[0.004416469497848602,12.982980095672309,-3.509220037236525],\"thumb_01_l\":[-1.307369646520056,10.708961402054054,0.3086419499028043],\"thumb_01_r\":[-3.4806828466835342,-11.92468170900816,-1.463344081378347],\"thumb_02_l\":[6.6463709183609625,0.9847668245460709,-5.341311076200379],\"thumb_02_r\":[0.15588813003108717,-5.330898975585665,-2.1027689161747585],\"thumb_03_l\":[-6.716433105386073,-1.274906394734334,-3.5171405032994474],\"thumb_03_r\":[-0.3590607088842275,0.07129217989264565,0.05193961120113886]},\"modelRotation\":[-2,-0.23882636187993414,0],\"camera\":{\"posX\":0.11600115844901868,\"posY\":6.495580441467104,\"posZ\":46.28018310666084,\"targetX\":0.11600115844901868,\"targetY\":6.4955804414671015,\"targetZ\":1.280183106660843},\"cameraParams\":{\"offset_x\":-0.11600115844901869,\"offset_y\":-6.113628155700501,\"zoom\":3.218127062617358,\"yaw_deg\":0,\"pitch_deg\":0},\"prompt\":\"\"}],\"lights\":[{\"type\":\"directional\",\"color\":\"#ffffff\",\"intensity\":2,\"x\":-0.6390347177508815,\"y\":20,\"z\":-7.062589272072728},{\"type\":\"ambient\",\"color\":\"#505050\",\"intensity\":1,\"x\":0,\"y\":0,\"z\":0}],\"activeTab\":0,\"capture_id\":\"vnccs_capture_492\",\"capture_version\":412,\"lighting_prompts\":[\"Draw character from image2\"],\"background_url\":null}",
+        "pose_studio_ui": ""
+      }
+    },
+    {
+      "id": 493,
+      "type": "GetImageSize",
+      "pos": [
+        -770,
+        4220
+      ],
+      "size": [
+        144.89861010324762,
+        124
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 780
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            781
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            782
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.38.0",
+        "Node name for S&R": "GetImageSize"
+      }
+    },
+    {
+      "id": 494,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        -790,
+        3710
+      ],
+      "size": [
+        510,
+        90
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 783
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            784
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.38.0",
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "VNCCS_QI2_PoseStudioV1.1.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "VNCCS_QI2_PoseStudioV1.1.safetensors",
+        "strength_model": 1
+      }
+    },
+    {
+      "id": 496,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        1420,
+        3580
+      ],
+      "size": [
+        760,
+        760
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 788
+        },
+        {
+          "dir": 3,
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 789
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "images",
+          "shape": 3,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "ver": "1.0.2604070017",
+        "comparer_mode": "Slide"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_psnus_00001_.png&type=temp&subfolder=&rand=0.5205570011934606"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_psnus_00002_.png&type=temp&subfolder=&rand=0.8571606378100186"
+          }
+        ]
+      ],
+      "widgets_values_named": {
+        "rgthree_comparer": {
+          "images": [
+            {
+              "name": "A",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_psnus_00001_.png&type=temp&subfolder=&rand=0.5205570011934606",
+              "img": {}
+            },
+            {
+              "name": "B",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_psnus_00002_.png&type=temp&subfolder=&rand=0.8571606378100186",
+              "img": {}
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "links": [
+    [
+      731,
+      479,
+      0,
+      481,
+      1,
+      "VAE"
+    ],
+    [
+      733,
+      482,
+      0,
+      481,
+      0,
+      "LATENT"
+    ],
+    [
+      737,
+      484,
+      0,
+      482,
+      0,
+      "MODEL"
+    ],
+    [
+      774,
+      489,
+      0,
+      482,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      775,
+      489,
+      1,
+      482,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      780,
+      492,
+      0,
+      493,
+      0,
+      "IMAGE"
+    ],
+    [
+      781,
+      493,
+      0,
+      480,
+      0,
+      "INT"
+    ],
+    [
+      782,
+      493,
+      1,
+      480,
+      1,
+      "INT"
+    ],
+    [
+      783,
+      477,
+      0,
+      494,
+      0,
+      "MODEL"
+    ],
+    [
+      784,
+      494,
+      0,
+      484,
+      0,
+      "MODEL"
+    ],
+    [
+      785,
+      480,
+      0,
+      482,
+      3,
+      "LATENT"
+    ],
+    [
+      788,
+      461,
+      0,
+      496,
+      0,
+      "IMAGE"
+    ],
+    [
+      789,
+      492,
+      0,
+      496,
+      1,
+      "IMAGE"
+    ],
+    [
+      732,
+      481,
+      0,
+      461,
+      0,
+      "IMAGE"
+    ],
+    [
+      770,
+      478,
+      0,
+      489,
+      0,
+      "CLIP"
+    ],
+    [
+      778,
+      492,
+      0,
+      489,
+      1,
+      "IMAGE"
+    ],
+    [
+      779,
+      470,
+      0,
+      489,
+      2,
+      "IMAGE"
+    ],
+    [
+      772,
+      479,
+      0,
+      489,
+      4,
+      "VAE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 38,
+      "title": "Models",
+      "bounding": [
+        -800,
+        3500,
+        530,
+        590
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 39,
+      "title": "Image Size",
+      "bounding": [
+        -800,
+        4110,
+        530,
+        250
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 40,
+      "title": "Conditioning",
+      "bounding": [
+        -250,
+        3500,
+        540,
+        860
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 41,
+      "title": "Sampling",
+      "bounding": [
+        310,
+        3500,
+        350,
+        860
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8140274938684013,
+      "offset": [
+        900.0544432626209,
+        -3853.1994147754644
+      ]
+    },
+    "frontendVersion": "1.53.10",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
