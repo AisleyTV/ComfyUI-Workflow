@@ -1,0 +1,946 @@
+{
+  "id": "9c175dfd-9113-499d-841c-fb27d7aa826e",
+  "revision": 0,
+  "last_node_id": 484,
+  "last_link_id": 696,
+  "nodes": [
+    {
+      "id": 13,
+      "type": "ResolutionSelector",
+      "pos": [
+        20,
+        3890
+      ],
+      "size": [
+        260,
+        150
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            688
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            689
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "ResolutionSelector"
+      },
+      "widgets_values": [
+        "16:9 (Widescreen)",
+        2.2,
+        8
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "16:9 (Widescreen)",
+        "megapixels": 2.2,
+        "multiple": 8
+      }
+    },
+    {
+      "id": 461,
+      "type": "SaveImageAdvanced",
+      "pos": [
+        1770,
+        3270
+      ],
+      "size": [
+        850,
+        610
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 683
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0"
+      },
+      "widgets_values": [
+        "Qwen_image/ComfyUI",
+        "png",
+        "8-bit",
+        "sRGB"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "Qwen_image/ComfyUI",
+        "format": "png",
+        "format.bit_depth": "8-bit",
+        "format.input_color_space": "sRGB"
+      }
+    },
+    {
+      "id": 470,
+      "type": "UNETLoader",
+      "pos": [
+        10,
+        3310
+      ],
+      "size": [
+        510,
+        90
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            691
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "qwen_image_2.1_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_image_2.1_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 471,
+      "type": "TextEncodeQwenImage21",
+      "pos": [
+        630,
+        3310
+      ],
+      "size": [
+        530,
+        680
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 681
+        },
+        {
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 693
+        },
+        {
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 695
+        },
+        {
+          "name": "images.image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 696
+        },
+        {
+          "name": "images.image_4",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "images.image_5",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 694
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            685
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            687
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "TextEncodeQwenImage21"
+      },
+      "widgets_values": [
+        "Create a four-panel character sheet of the same person. Use <image1> only for the character’s identity, face, skin tone, body proportions, and hairstyle; use <image2> strictly for the four-panel layout, poses, viewing angles, figure scale, and crops; and use <image3> only as the clothing reference. Dress the person from <image1> in the outfit from <image3>, accurately preserving its design, colors, fabrics, patterns, cut, and visible decorative details. Do not retain the original clothing from <image1> or transfer any person’s identity, pose, or background from <image3>. The far-left panel is an enlarged front-facing head close-up: the head is upright, both eyes look directly at the camera, the complete hairstyle is visible, and the frame ends at the upper chest, showing only the neckline and shoulders of the outfit from <image3>; the waist, hands, and legs are outside this crop. The second panel is a standing full-body front view with the face and torso directed toward the camera. The third panel is a standard full-body side view facing the right edge of the frame. The fourth panel is a standing full-body back view. Match each corresponding figure in <image2> in head direction, shoulder angle, arm position, leg posture, figure scale, placement, and foot baseline. The second panel must remain a front view rather than becoming another side view. Keep the character’s identity, hairstyle, and outfit consistent across all four panels. The side and back of the outfit correspond coherently to the design visible in <image3>, with any unseen areas completed simply and plausibly. Use the plain white background and soft, even studio lighting of <image2>, taking only its poses and layout rather than the mannequins’ appearance. Include only these four views, with no text or additional people.",
+        "",
+        2048
+      ],
+      "widgets_values_named": {
+        "prompt": "Create a four-panel character sheet of the same person. Use <image1> only for the character’s identity, face, skin tone, body proportions, and hairstyle; use <image2> strictly for the four-panel layout, poses, viewing angles, figure scale, and crops; and use <image3> only as the clothing reference. Dress the person from <image1> in the outfit from <image3>, accurately preserving its design, colors, fabrics, patterns, cut, and visible decorative details. Do not retain the original clothing from <image1> or transfer any person’s identity, pose, or background from <image3>. The far-left panel is an enlarged front-facing head close-up: the head is upright, both eyes look directly at the camera, the complete hairstyle is visible, and the frame ends at the upper chest, showing only the neckline and shoulders of the outfit from <image3>; the waist, hands, and legs are outside this crop. The second panel is a standing full-body front view with the face and torso directed toward the camera. The third panel is a standard full-body side view facing the right edge of the frame. The fourth panel is a standing full-body back view. Match each corresponding figure in <image2> in head direction, shoulder angle, arm position, leg posture, figure scale, placement, and foot baseline. The second panel must remain a front view rather than becoming another side view. Keep the character’s identity, hairstyle, and outfit consistent across all four panels. The side and back of the outfit correspond coherently to the design visible in <image3>, with any unseen areas completed simply and plausibly. Use the plain white background and soft, even studio lighting of <image2>, taking only its poses and layout rather than the mannequins’ appearance. Include only these four views, with no text or additional people.",
+        "negative_prompt": "",
+        "resolution": 2048
+      }
+    },
+    {
+      "id": 472,
+      "type": "CLIPLoader",
+      "pos": [
+        10,
+        3470
+      ],
+      "size": [
+        510,
+        120
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            681
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "qwen3vl_8b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3vl_8b_int8_convrot.safetensors",
+        "qwen_image",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+        "type": "qwen_image",
+        "device": "default"
+      }
+    },
+    {
+      "id": 473,
+      "type": "VAELoader",
+      "pos": [
+        10,
+        3670
+      ],
+      "size": [
+        510,
+        70
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            682,
+            694
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "qwen_image_2.1_vae_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_image_2.1_vae_bf16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+      }
+    },
+    {
+      "id": 474,
+      "type": "EmptyLatentImage",
+      "pos": [
+        300,
+        3890
+      ],
+      "size": [
+        210,
+        110
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 688
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 689
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            686
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 475,
+      "type": "VAEDecode",
+      "pos": [
+        1380,
+        3860
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 684
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 682
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            683
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 476,
+      "type": "KSampler",
+      "pos": [
+        1360,
+        3540
+      ],
+      "size": [
+        270,
+        270
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 692
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 685
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 687
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 686
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            684
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.37.0",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        213607140444888,
+        "randomize",
+        25,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 213607140444888,
+        "control_after_generate": "randomize",
+        "steps": 25,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 478,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        696.0195914826222,
+        3093.876082411879
+      ],
+      "size": [
+        429.6521162145775,
+        82
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 691
+        },
+        {
+          "label": "lora_name",
+          "name": "lora_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "lora_name"
+          },
+          "link": null
+        },
+        {
+          "label": "strength_model",
+          "name": "strength_model",
+          "type": "FLOAT",
+          "widget": {
+            "name": "strength_model"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            692
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.38.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "QI2.1_AnyAngle.safetensors",
+        0.6000000000000001
+      ],
+      "widgets_values_named": {
+        "lora_name": "QI2.1_AnyAngle.safetensors",
+        "strength_model": 0.6000000000000001
+      }
+    },
+    {
+      "id": 481,
+      "type": "LoadImage",
+      "pos": [
+        -430,
+        3080
+      ],
+      "size": [
+        403.55185833422524,
+        597.0973364708475
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            693
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.38.0",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI_00326.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "ComfyUI_00326.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 482,
+      "type": "LoadImage",
+      "pos": [
+        -430,
+        3730
+      ],
+      "size": [
+        400,
+        330
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            695
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.38.0",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI_00431.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "ComfyUI_00431.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 483,
+      "type": "LoadImage",
+      "pos": [
+        -434.9854545049681,
+        4107.522623297461
+      ],
+      "size": [
+        400,
+        330
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "label": "upload",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            696
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.38.0",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "blue dress.jpg",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "blue dress.jpg",
+        "upload": "image"
+      }
+    }
+  ],
+  "links": [
+    [
+      682,
+      473,
+      0,
+      475,
+      1,
+      "VAE"
+    ],
+    [
+      684,
+      476,
+      0,
+      475,
+      0,
+      "LATENT"
+    ],
+    [
+      685,
+      471,
+      0,
+      476,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      686,
+      474,
+      0,
+      476,
+      3,
+      "LATENT"
+    ],
+    [
+      687,
+      471,
+      1,
+      476,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      688,
+      13,
+      0,
+      474,
+      0,
+      "INT"
+    ],
+    [
+      689,
+      13,
+      1,
+      474,
+      1,
+      "INT"
+    ],
+    [
+      691,
+      470,
+      0,
+      478,
+      0,
+      "MODEL"
+    ],
+    [
+      692,
+      478,
+      0,
+      476,
+      0,
+      "MODEL"
+    ],
+    [
+      683,
+      475,
+      0,
+      461,
+      0,
+      "IMAGE"
+    ],
+    [
+      681,
+      472,
+      0,
+      471,
+      0,
+      "CLIP"
+    ],
+    [
+      693,
+      481,
+      0,
+      471,
+      1,
+      "IMAGE"
+    ],
+    [
+      695,
+      482,
+      0,
+      471,
+      2,
+      "IMAGE"
+    ],
+    [
+      696,
+      483,
+      0,
+      471,
+      3,
+      "IMAGE"
+    ],
+    [
+      694,
+      473,
+      0,
+      471,
+      6,
+      "VAE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 38,
+      "title": "Models",
+      "bounding": [
+        0,
+        3200,
+        530,
+        590
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 39,
+      "title": "Image Size",
+      "bounding": [
+        0,
+        3810,
+        530,
+        250
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 40,
+      "title": "Conditioning",
+      "bounding": [
+        550,
+        3200,
+        700,
+        860
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 41,
+      "title": "Sampling",
+      "bounding": [
+        1270,
+        3200,
+        470,
+        860
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.41293637912149295,
+      "offset": [
+        1541.4666571884568,
+        -2586.6606342433083
+      ]
+    },
+    "frontendVersion": "1.53.10",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
