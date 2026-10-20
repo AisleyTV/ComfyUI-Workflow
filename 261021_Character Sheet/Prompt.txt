@@ -1,0 +1,38 @@
+[1 Character Image]
+Create a high-quality professional character reference sheet. 
+Character from image 1, using a clean white studio background.
+
+The composition is divided into two sections:
+On the left, a large detailed close-up portrait of her face and upper shoulders, looking directly at the camera. Clearly preserve her facial identity, facial proportions, hairstyle, eye shape, nose, lips, skin texture, and distinctive features.
+On the right, show three full-body views of the exact same woman standing upright: front view, left side profile view, and back view, arranged horizontally with equal spacing.
+
+She wears exactly the same outfit in every view: outift from image 1.
+
+Maintain exactly the same person, face, hairstyle, body proportions, outfit, colors, materials, and accessories across all four views. The front, side, and back views must clearly show the same clothing construction and details.
+
+Professional fashion character sheet photography, realistic human anatomy, photorealistic skin and hair, accurate clothing texture, soft even studio lighting, subtle natural shadows, neutral white background, clean composition, consistent scale, full body visible from head to boots, no cropping, high detail, sharp focus.
+
+Four clearly separated views in one image:
+1. Large facial close-up portrait on the left.
+2. Full-body front view on the right.
+3. Full-body left side profile view on the right.
+4. Full-body back view on the right.
+
+No text, no labels, no logos, no watermark, no additional people, no duplicate limbs, no distorted anatomy.
+
+
+---------------------------------------------------------------------------------------------
+
+
+[Character Image + Pose Image]
+Use <image1> as the reference for the character’s identity, face, hairstyle, clothing, and accessories. Follow <image2> strictly as the template for the four-column layout, poses, and crops. The far-left panel must be a noticeably enlarged, front-facing head close-up: the head is upright, both eyes look directly at the camera, the entire hairstyle remains visible at the top, and the image is cropped at the upper chest. The face and hair occupy most of this panel; the waist, skirt, hands, and legs are outside the crop. The second panel must show a standing full-body front view, with the face and torso facing the camera, arms resting naturally, and both feet fully visible. The third panel shows a standard full-body side view facing the right edge of the frame. The fourth panel shows a standing full-body back view. Match the position, direction, figure scale, pose, and foot baseline of each corresponding panel in <image2>. The second panel must not become a side view or a half-body view, and the third panel must not be replaced by an additional side view facing the opposite direction. All four panels show the same person from <image1> with consistent identity and clothing details. Take only the poses and composition from <image2>, not the mannequin’s appearance. Plain white studio background, soft even lighting, no text or additional people.
+
+
+---------------------------------------------------------------------------------------------
+
+
+[Character Image + Pose Image + Clouth Image]
+Create a four-panel character sheet of the same person. Use <image1> only for the character’s identity, face, skin tone, body proportions, and hairstyle; use <image2> strictly for the four-panel layout, poses, viewing angles, figure scale, and crops; and use <image3> only as the clothing reference. Dress the person from <image1> in the outfit from <image3>, accurately preserving its design, colors, fabrics, patterns, cut, and visible decorative details. Do not retain the original clothing from <image1> or transfer any person’s identity, pose, or background from <image3>. The far-left panel is an enlarged front-facing head close-up: the head is upright, both eyes look directly at the camera, the complete hairstyle is visible, and the frame ends at the upper chest, showing only the neckline and shoulders of the outfit from <image3>; the waist, hands, and legs are outside this crop. The second panel is a standing full-body front view with the face and torso directed toward the camera. The third panel is a standard full-body side view facing the right edge of the frame. The fourth panel is a standing full-body back view. Match each corresponding figure in <image2> in head direction, shoulder angle, arm position, leg posture, figure scale, placement, and foot baseline. The second panel must remain a front view rather than becoming another side view. Keep the character’s identity, hairstyle, and outfit consistent across all four panels. The side and back of the outfit correspond coherently to the design visible in <image3>, with any unseen areas completed simply and plausibly. Use the plain white background and soft, even studio lighting of <image2>, taking only its poses and layout rather than the mannequins’ appearance. Include only these four views, with no text or additional people.
+
+
+
